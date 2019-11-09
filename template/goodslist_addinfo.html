@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加商品类别</title>
+
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/jquery-1.11.3.js"></script>
+
+</head>
+<body>
+
+{% csrf_token %}
+
+    <select> <option value="">商品类别</option></select>
+
+    <p>
+        商品信息: <input type="text" id='spxx' name="spxx">
+    </p>
+    <p>
+        产地: <input type="text" id='spcd' name="spcd">
+    </p>
+    <p>
+        单位: <input type="text" id='spdw' name="spdw">
+    </p>
+    <p>
+        规格: <input type="text" id='spgg' name="spgg">
+    </p>
+    <p>
+        数量: <input type="text" id='spsl' name="spsl">
+    </p>
+    <p>
+        备注: <br> <textarea name="spbz" id="spbz" cols="40" rows="10"></textarea>
+    </p>
+    <!-- <span id='show2'></span> -->
+    <br>
+    <button id='btn'>添加</button>
+    <br>
+
+    <input type="button" value="返回商品信息" name="all">
+    
+<script>
+    $(function(){
+        $('#btn').click(function(){
+            var params = {
+                'spname':$('#spname').val(),
+                'spms':$('#spms').val(),
+                'csrfmiddlewaretoken':$("[name=csrfmiddlewaretoken]").val()
+            }
+            $.post('/goodslist/addsort/',params,function(res){
+                if (res.code == 200){
+                    alert(res.data)
+                }else{
+                    alert(res.error)
+                }
+                
+                
+            },'json');
+        })
+
+    })
+</script>
+
+</body>
+</html>

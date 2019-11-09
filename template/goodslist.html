@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>仓库列表</title>
+    <style>
+        table tr td{
+            padding:10px;
+            border:solid 1px #ccc;
+        }
+        table tr th{
+            padding:10px;
+            border:solid 1px #ccc;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>姓名</th>
+            <th>班级</th>
+            <th>年龄</th>
+            <th>成绩</th>
+            <th>操作</th>
+        </tr>
+        {% for i in all %}
+        <tr>
+            <td>{{ i.name }}</td>
+            <td>{{ i.clas }}</td>
+            <td>{{ i.age }}</td>
+            <td>{{ i.score }}</td>
+            <td>
+                <a href="/students/update/{{ i.id }}">更新</a>
+                <a href="/students/delete/{{ i.id }}">删除</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    <!--&lt;!&ndash;<a href="/students/add">添加学生</a>&ndash;&gt; 页面跳转方法一:a标签,方法二:form表单套input按钮-->
+    <form action="/students/add" method="post">
+    <input type="submit" value="添加学生" name="all">
+</form>
+</body>
+</html>

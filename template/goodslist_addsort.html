@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加商品类别</title>
+
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/jquery-1.11.3.js"></script>
+
+</head>
+<body>
+
+{% csrf_token %}
+    <p>
+        商品类别: <input type="text" id='spname' name="spname"><span id='show'></span>
+    </p>
+    
+    <p>
+        商品描述: <br> <textarea name="spms" id="spms" cols="40" rows="10"></textarea>
+    </p>
+    <!-- <span id='show2'></span> -->
+    <br>
+    <button id='btn'>添加</button>
+    <br>
+
+    <input type="button" value="返回商品信息" name="all">
+    
+<script>
+
+function checkuname(){
+            //用户名已存在 则返回true,用户名可注册 返回false
+            // var res =false;
+            //1.创建xhr4
+            var xhr = createXhr();
+            //2.创建请求
+            var spname = document.getElementById('spname').value;
+            var url = '/goodslist/addsort_server/?spname=' + spname;
+            xhr.open('get',url,true);
+            //3.设置回调
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4 && xhr.status == 200){
+                    var xx = xhr.responseText.val;
+                    console.log(xx)
+                    if (xhr.responseText == '1'){
+                            // res = true
+                            $('#show').html('商品已存在');
+                            document.getElementById("btn").disabled=true;
+                        }else{
+                            $('#show').html('OK');
+                            document.getElementById("btn").disabled=false;
+                        }
+                    // alert(xhr.responseText);
+                }
+            }
+            //4.发送请求
+            xhr.send(null);
+            // return res
+    }
+
+    $(function(){
+        $('#spname').blur(function(){
+            checkuname()
+        })
+    });
+
+    $(function(){
+        $('#btn').click(function(){
+            var params = {
+                'spname':$('#spname').val(),
+                'spms':$('#spms').val(),
+                'csrfmiddlewaretoken':$("[name=csrfmiddlewaretoken]").val()
+            }
+            $.post('/goodslist/addsort/',params,function(res){
+                if (res.code == 200){
+                    alert(res.data)
+                }else{
+                    alert(res.error)
+                }
+                
+                
+            },'json');
+        })
+
+    })
+</script>
+
+</body>
+</html>
