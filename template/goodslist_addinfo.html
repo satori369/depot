@@ -12,10 +12,14 @@
 
 {% csrf_token %}
 
-    <select> <option value="">商品类别</option></select>
+    <select id='splb' name='splb'>
+		{% for i in arr %}
+		<option value="{{ i.name }}">{{ i.name }}</option>
+		{% endfor %}
+	</select>
 
     <p>
-        商品信息: <input type="text" id='spxx' name="spxx">
+        商品信息(必填): <input type="text" id='spxx' name="spxx">
     </p>
     <p>
         产地: <input type="text" id='spcd' name="spcd">
@@ -27,7 +31,7 @@
         规格: <input type="text" id='spgg' name="spgg">
     </p>
     <p>
-        数量: <input type="text" id='spsl' name="spsl">
+        数量: <input type="text" id='spsl' name="spsl" value="0">
     </p>
     <p>
         备注: <br> <textarea name="spbz" id="spbz" cols="40" rows="10"></textarea>
@@ -43,11 +47,16 @@
     $(function(){
         $('#btn').click(function(){
             var params = {
-                'spname':$('#spname').val(),
-                'spms':$('#spms').val(),
+				'splb':$('#splb').val(),
+                'spxx':$('#spxx').val(),
+                'spcd':$('#spcd').val(),
+				'spdw':$('#spdw').val(),
+				'spgg':$('#spgg').val(),
+				'spsl':$('#spsl').val(),
+				'spbz':$('#spbz').val(),
                 'csrfmiddlewaretoken':$("[name=csrfmiddlewaretoken]").val()
             }
-            $.post('/goodslist/addsort/',params,function(res){
+            $.post('/goodslist/addinfo/',params,function(res){
                 if (res.code == 200){
                     alert(res.data)
                 }else{

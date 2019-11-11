@@ -17,11 +17,11 @@ class Goods_info(models.Model):
 
     goods_sort = models.ForeignKey(Goods_sort)
     name = models.CharField(max_length=50,verbose_name='商品信息')
-    area = models.CharField(verbose_name='产地',max_length=50)
-    unit = models.CharField(verbose_name='单位',max_length=50)
-    spec = models.CharField(verbose_name='规格',max_length=50)
-    remark = models.CharField(verbose_name='备注',max_length=50)
-    is_active = models.BooleanField(verbose_name='删除')
+    area = models.CharField(verbose_name='产地',max_length=50,default='')
+    unit = models.CharField(verbose_name='单位',max_length=50,default='')
+    spec = models.CharField(verbose_name='规格',max_length=50,default='')
+    remark = models.CharField(verbose_name='备注',max_length=50,default='')
+    is_active = models.BooleanField(verbose_name='删除',default=True)
     number = models.IntegerField(verbose_name='数量',default=1)
 
     class Meta:
