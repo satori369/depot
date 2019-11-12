@@ -1,5 +1,5 @@
 from goodslist.models import Goods_sort,Goods_info
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
@@ -86,15 +86,30 @@ def goodslist_addinfo(request):
             #入库出现错误,返回页面商品已存在,后台打印错误类型方便排除
             print('----create error----')
             print(e)
-            result = {'code': 10106, 'error': '添加商品信息失败,商品类别已存在 !!'}
+            result = {'code': 10106, 'error': '添加商品信息失败,请确认信息后重试 !!'}
             return JsonResponse(result)
         #完成入库,返回200给页面
         result = {'code': 200, 'data': 'code200 添加 ok'}
         return JsonResponse(result)
 
-# 获取全部  删除商品
-# def goodslist(request):
-#
-#     top_all = Goods_sort.objects.all()
-#
-#     return render(request, 'goodslist_add.html')
+# 获取全部商品http:127.0.0.1:8000/goodslist/all/
+def goodslist(request):
+
+    print('获取全部商品 ok')
+    goods_all = Goods_info.objects.all()
+
+    return render(request, 'goodslist.html', locals())
+
+# 删除商品#http:127.0.0.1:8000/goodslist/delete/
+def goodslist_delete(request,goods_id):
+
+    try:
+        upd = Goods_info.objects.get(id=goods_id)
+        upd.delete()
+    except Exception as e:
+        # 删除商品出现错误,后台打印错误类型方便排除
+        print('----delete error----')
+        print(e)
+        return HttpResponse('删除商品信息失败,请确认信息后重试 !!')
+
+    return HttpResponseRedirect('/goodslist/all/')

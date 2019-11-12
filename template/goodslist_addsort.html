@@ -22,9 +22,12 @@
     <br>
     <button id='btn'>添加</button>
     <br>
-
-    <input type="button" value="返回商品信息" name="all">
-    
+    <form action="/goodslist/all/" method="get">
+        <input type="submit" value="返回商品信息" name="all">
+    </form>
+    <form action="/goodslist/addinfo/" method="get">
+        <input type="submit" value="添加商品信息" name="addinfo">
+    </form>
 <script>
 
 function checkuname(){

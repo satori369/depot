@@ -22,6 +22,9 @@
         商品信息(必填): <input type="text" id='spxx' name="spxx">
     </p>
     <p>
+        数量: <input type="text" id='spsl' name="spsl" value="0">
+    </p>
+    <p>
         产地: <input type="text" id='spcd' name="spcd">
     </p>
     <p>
@@ -31,9 +34,6 @@
         规格: <input type="text" id='spgg' name="spgg">
     </p>
     <p>
-        数量: <input type="text" id='spsl' name="spsl" value="0">
-    </p>
-    <p>
         备注: <br> <textarea name="spbz" id="spbz" cols="40" rows="10"></textarea>
     </p>
     <!-- <span id='show2'></span> -->
@@ -41,7 +41,12 @@
     <button id='btn'>添加</button>
     <br>
 
-    <input type="button" value="返回商品信息" name="all">
+    <form action="/goodslist/all/" method="get">
+        <input type="submit" value="返回商品信息" name="all">
+    </form>
+    <form action="/goodslist/addsort/" method="get">
+        <input type="submit" value="添加商品类别" name="addsort">
+    </form>
     
 <script>
     $(function(){
