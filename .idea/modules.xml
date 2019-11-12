@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../month03/project/client/.idea/client.iml" filepath="$PROJECT_DIR$/../../month03/project/client/.idea/client.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/depot.iml" filepath="$PROJECT_DIR$/.idea/depot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../ht2048/.idea/ht2048.iml" filepath="$PROJECT_DIR$/../../ht2048/.idea/ht2048.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../lx/.idea/lx.iml" filepath="$PROJECT_DIR$/../../lx/.idea/lx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../lx/lxwjj/.idea/lxwjj.iml" filepath="$PROJECT_DIR$/../../lx/lxwjj/.idea/lxwjj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../month03/.idea/month03.iml" filepath="$PROJECT_DIR$/../../month03/.idea/month03.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../month03_ajax/.idea/month03_ajax.iml" filepath="$PROJECT_DIR$/../../month03_ajax/.idea/month03_ajax.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../month04/.idea/month04.iml" filepath="$PROJECT_DIR$/../../month04/.idea/month04.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../month03/project/wiki/.idea/wiki.iml" filepath="$PROJECT_DIR$/../../month03/project/wiki/.idea/wiki.iml" />
     </modules>
   </component>
 </project>
